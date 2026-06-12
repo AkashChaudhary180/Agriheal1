@@ -1,0 +1,301 @@
+{
+  "crops": [
+    {
+      "name": "Wheat",
+      "diseases": [
+        {
+          "type": "Fungal",
+          "name": "Rust",
+          "symptoms": ["orange powdery bumps", "rust-colored spots", "orange pustules"],
+          "treatment": "Apply protective fungicides like Mancozeb. Remove heavily infected plant parts.",
+          "pesticide": "Mancozeb 75 WP / Tilt 250 EC",
+          "prevention": "Use resistant varieties, crop rotation, and timely fungicide sprays."
+        },
+        {
+          "type": "Bacterial",
+          "name": "Bacterial Leaf Blight",
+          "symptoms": ["brown streaks", "drying leaf tips", "water-soaked lesions"],
+          "treatment": "Remove infected parts and practice field sanitation.",
+          "pesticide": "Copper-based bactericides like Copper oxychloride (Blitox)",
+          "prevention": "Use certified seed; avoid overhead irrigation."
+        },
+        {
+          "type": "Viral",
+          "name": "Mosaic Virus",
+          "symptoms": ["yellow streaks", "mottling", "stunted growth"],
+          "treatment": "No chemical cure. Remove infected plants, control insect vectors.",
+          "pesticide": "None (control vectors like aphids)",
+          "prevention": "Use virus-free seed; control aphids."
+        }
+      ]
+    },
+
+    {
+      "name": "Rice",
+      "diseases": [
+        {
+          "type": "Fungal",
+          "name": "Blast",
+          "symptoms": ["leaf lesions", "diamond-shaped spots", "panicle blight"],
+          "treatment": "Use systemic fungicides; remove crop residues.",
+          "pesticide": "Tricyclazole or Propiconazole",
+          "prevention": "Maintain proper spacing; resistant varieties."
+        },
+        {
+          "type": "Bacterial",
+          "name": "Bacterial Leaf Blight",
+          "symptoms": ["yellowing leaves", "wilted plants", "water-soaked lesions"],
+          "treatment": "Seed treatment and copper sprays.",
+          "pesticide": "Copper oxychloride",
+          "prevention": "Use clean seed, balanced fertilizer."
+        },
+        {
+          "type": "Fungal",
+          "name": "Sheath Blight",
+          "symptoms": ["oval lesions", "sheath rotting", "lodging"],
+          "treatment": "Apply validamycin or propiconazole.",
+          "pesticide": "Validamycin 3L",
+          "prevention": "Avoid dense planting; proper nitrogen management."
+        }
+      ]
+    },
+
+    {
+      "name": "Tomato",
+      "diseases": [
+        {
+          "type": "Fungal",
+          "name": "Early Blight",
+          "symptoms": ["concentric dark spots", "leaf yellowing", "fruit spots"],
+          "treatment": "Fungicide sprays and removal of infected debris.",
+          "pesticide": "Chlorothalonil or Mancozeb",
+          "prevention": "Crop rotation and good field sanitation."
+        },
+        {
+          "type": "Viral",
+          "name": "Tomato Mosaic Virus",
+          "symptoms": ["mosaic pattern", "leaf curling", "stunted plants"],
+          "treatment": "No cure. Remove infected plants and control vectors.",
+          "pesticide": "None (vector control)",
+          "prevention": "Use virus-free seedlings; hygiene."
+        },
+        {
+          "type": "Bacterial",
+          "name": "Bacterial Wilt",
+          "symptoms": ["sudden wilting", "brown vascular tissue", "stem ooze"],
+          "treatment": "Remove infected plants; apply bleaching powder in soil.",
+          "pesticide": "Copper oxychloride",
+          "prevention": "Use resistant varieties; avoid waterlogging."
+        }
+      ]
+    },
+
+   
+
+    {
+      "name": "Potato",
+      "diseases": [
+        {
+          "type": "Fungal",
+          "name": "Late Blight",
+          "symptoms": ["brown leaf lesions", "white mold under leaves", "tuber rot"],
+          "treatment": "Spray Mancozeb or Metalaxyl.",
+          "pesticide": "Mancozeb 75 WP",
+          "prevention": "Use resistant varieties; avoid overhead irrigation."
+        },
+        {
+          "type": "Bacterial",
+          "name": "Soft Rot",
+          "symptoms": ["wet rot", "foul smell", "softened tubers"],
+          "treatment": "Remove infected tubers; improve drainage.",
+          "pesticide": "Bleaching powder in soil",
+          "prevention": "Avoid injuries during harvest; proper storage."
+        },
+        {
+          "type": "Viral",
+          "name": "Potato Virus Y",
+          "symptoms": ["leaf mottling", "yellowing", "stunted growth"],
+          "treatment": "No cure. Control aphids.",
+          "pesticide": "None (vector control)",
+          "prevention": "Plant certified virus-free seeds."
+        }
+      ]
+    },
+
+    {
+      "name": "Maize",
+      "diseases": [
+        {
+          "type": "Fungal",
+          "name": "Turcicum Leaf Blight",
+          "symptoms": ["elongated lesions", "grayish patches", "drying leaves"],
+          "treatment": "Apply Mancozeb or Carbendazim.",
+          "pesticide": "Mancozeb 75 WP",
+          "prevention": "Resistant varieties; remove debris."
+        },
+        {
+          "type": "Viral",
+          "name": "Maize Streak Virus",
+          "symptoms": ["fine yellow streaks", "stunted plants"],
+          "treatment": "No treatment. Remove infected plants.",
+          "pesticide": "None",
+          "prevention": "Control leafhoppers."
+        }
+      ]
+    },
+
+    {
+      "name": "Sugarcane",
+      "diseases": [
+        {
+          "type": "Fungal",
+          "name": "Red Rot",
+          "symptoms": ["reddish cane tissue", "white patches", "drying shoots"],
+          "treatment": "Use Carbendazim; remove infected clumps.",
+          "pesticide": "Carbendazim 50 WP",
+          "prevention": "Resistant varieties; proper drainage."
+        },
+        {
+          "type": "Bacterial",
+          "name": "Leaf Scald",
+          "symptoms": ["white pencil line", "wilting", "leaf scorching"],
+          "treatment": "Remove diseased canes.",
+          "pesticide": "None recommended",
+          "prevention": "Use disease-free seed cane."
+        }
+      ]
+    },
+
+    {
+      "name": "Cotton",
+      "diseases": [
+        {
+          "type": "Fungal",
+          "name": "Alternaria Leaf Spot",
+          "symptoms": ["brown circular spots", "leaf drop"],
+          "treatment": "Spray Mancozeb.",
+          "pesticide": "Mancozeb",
+          "prevention": "Resistant varieties."
+        },
+        {
+          "type": "Viral",
+          "name": "Cotton Leaf Curl Virus",
+          "symptoms": ["leaf curling", "swelling veins", "stunted growth"],
+          "treatment": "No cure, remove infected plants.",
+          "pesticide": "None",
+          "prevention": "Control whiteflies."
+        }
+      ]
+    },
+
+    {
+      "name": "Soybean",
+      "diseases": [
+        {
+          "type": "Fungal",
+          "name": "Rust",
+          "symptoms": ["tiny brown pustules", "yellowing leaves"],
+          "treatment": "Spray triazole fungicides.",
+          "pesticide": "Propiconazole",
+          "prevention": "Use resistant varieties."
+        },
+        {
+          "type": "Bacterial",
+          "name": "Bacterial Blight",
+          "symptoms": ["water-soaked spots", "brown centers"],
+          "treatment": "Apply copper fungicides.",
+          "pesticide": "Copper oxychloride",
+          "prevention": "Clean seeds."
+        }
+      ]
+    },
+
+    {
+      "name": "Mustard",
+      "diseases": [
+        {
+          "type": "Fungal",
+          "name": "White Rust",
+          "symptoms": ["white blisters", "deformed pods"],
+          "treatment": "Spray Metalaxyl.",
+          "pesticide": "Metalaxyl",
+          "prevention": "Avoid waterlogging."
+        },
+        {
+          "type": "Fungal",
+          "name": "Alternaria Blight",
+          "symptoms": ["black spots", "leaf blight"],
+          "treatment": "Mancozeb sprays.",
+          "pesticide": "Mancozeb",
+          "prevention": "Crop rotation."
+        }
+      ]
+    },
+
+    {
+      "name": "Banana",
+      "diseases": [
+        {
+          "type": "Fungal",
+          "name": "Panama Wilt",
+          "symptoms": ["yellowing leaves", "wilting", "vascular discoloration"],
+          "treatment": "No cure. Remove infected plants.",
+          "pesticide": "None",
+          "prevention": "Use resistant varieties."
+        },
+        {
+          "type": "Viral",
+          "name": "Banana Bunchy Top Virus",
+          "symptoms": ["bunchy top", "stunted growth", "dark dots on leaves"],
+          "treatment": "Remove infected plants.",
+          "pesticide": "None",
+          "prevention": "Control aphids."
+        }
+      ]
+    },
+
+    {
+      "name": "Grapes",
+      "diseases": [
+        {
+          "type": "Fungal",
+          "name": "Powdery Mildew",
+          "symptoms": ["white powder", "reduced fruit size"],
+          "treatment": "Apply sulfur-based fungicides.",
+          "pesticide": "Wettable sulfur",
+          "prevention": "Proper ventilation."
+        },
+        {
+          "type": "Fungal",
+          "name": "Downy Mildew",
+          "symptoms": ["yellow oil spots", "white cottony growth"],
+          "treatment": "Copper fungicides.",
+          "pesticide": "Copper oxychloride",
+          "prevention": "Avoid overhead irrigation."
+        }
+      ]
+    },
+
+    {
+      "name": "Brinjal",
+      "diseases": [
+        {
+          "type": "Fungal",
+          "name": "Phomopsis Blight",
+          "symptoms": ["fruit rot", "brown spots", "stem lesions"],
+          "treatment": "Spray Mancozeb.",
+          "pesticide": "Mancozeb",
+          "prevention": "Resistant varieties."
+        },
+        {
+          "type": "Bacterial",
+          "name": "Bacterial Wilt",
+          "symptoms": ["rapid wilting", "browning stem", "ooze"],
+          "treatment": "Remove infected plants.",
+          "pesticide": "Bleaching powder in soil",
+          "prevention": "Use resistant varieties."
+        }
+      ]
+    }
+  ]
+}

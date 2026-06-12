@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AgriHeal — Pest & Disease Diagnosis</title>
+  
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <h1>AgriHeal <i class="fas fa-seedling"></i></h1>
+      <p>Smart crop disease diagnosis for farmers</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Diagnose Your Crop <i class="fas fa-stethoscope"></i></h2>
+      <div class="form-row">
+        <label for="cropSelect">Select Crop</label>
+        <select id="cropSelect"><option>Loading...</option></select>
+      </div>
+
+      <div class="form-row">
+        <label for="symptomInput">Describe Symptoms (keywords)</label>
+        <textarea id="symptomInput" rows="4" placeholder="e.g. orange powdery bumps, rust-colored spots"></textarea>
+      </div>
+
+      <div class="form-row buttons-row">
+        <button id="diagnoseBtn" class="btn"><i class="fas fa-search"></i> Diagnose</button>
+        <button id="clearBtn" class="btn secondary"><i class="fas fa-eraser"></i> Clear</button>
+      </div>
+    </section>
+
+    <section id="resultSection" class="card hidden">
+      <h3>Diagnosis Result <i class="fas fa-notes-medical"></i></h3>
+      <div id="resultArea"></div>
+      <div class="form-row">
+        <button id="downloadBtn" class="btn"><i class="fas fa-download"></i> Download Report</button>
+      </div>
+    </section>
+
+    <footer class="card muted">
+      <p>Built for farmers. Expand disease database to improve accuracy. <i class="fas fa-leaf"></i></p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
