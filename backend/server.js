@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 // Start server (IPv4 to avoid EADDRINUSE on :::5000/7000)
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 // app.listen(PORT, "127.0.0.1", () => {
 //   console.log(`AgriHeal backend running on http://127.0.0.1:${PORT}`);
 // });
