@@ -65,27 +65,109 @@ document.addEventListener("DOMContentLoaded", () => {
     URL.revokeObjectURL(url);
   });
 
-  function renderResult(data) {
-    resultArea.innerHTML = "";
-    if (!data.matches || data.matches.length === 0) {
-      const noMatch = document.createElement("div");
-      noMatch.className = "result-card";
-      noMatch.innerHTML = `<strong>No exact disease match found.</strong><div class="result-meta">Try adding more symptom keywords (colors, spots, lesion shape, insects present).</div>`;
-      resultArea.appendChild(noMatch);
-      return;
-    }
+  // function renderResult(data) {
+  //   resultArea.innerHTML = "";
+  //   if (!data.matches || data.matches.length === 0) {
+  //     const noMatch = document.createElement("div");
+  //     noMatch.className = "result-card";
+  //     noMatch.innerHTML = `<strong>No exact disease match found.</strong><div class="result-meta">Try adding more symptom keywords (colors, spots, lesion shape, insects present).</div>`;
+  //     resultArea.appendChild(noMatch);
+  //     return;
+  //   }
 
-    for (const m of data.matches) {
-      const card = document.createElement("div");
-      card.className = "result-card";
-      card.innerHTML = `
-        <h4>${m.name} <small style="color:#666">(${m.type})</small></h4>
-        <div><strong>Symptoms keywords:</strong> ${m.symptoms.join(", ")}</div>
-        <div style="margin-top:8px;"><strong>Treatment:</strong> ${m.treatment}</div>
-        <div style="margin-top:6px;"><strong>Pesticide:</strong> ${m.pesticide}</div>
-        <div style="margin-top:6px;"><strong>Prevention:</strong> ${m.prevention || "—"}</div>
-      `;
-      resultArea.appendChild(card);
-    }
+  //   for (const m of data.matches) {
+  //     const card = document.createElement("div");
+  //     card.className = "result-card";
+  //     card.innerHTML = `
+  //       <h4>${m.name} <small style="color:#666">(${m.type})</small></h4>
+  //       <div><strong>Symptoms keywords:</strong> ${m.symptoms.join(", ")}</div>
+  //       <div style="margin-top:8px;"><strong>Treatment:</strong> ${m.treatment}</div>
+  //       <div style="margin-top:6px;"><strong>Pesticide:</strong> ${m.pesticide}</div>
+  //       <div style="margin-top:6px;"><strong>Prevention:</strong> ${m.prevention || "—"}</div>
+  //     `;
+  //     resultArea.appendChild(card);
+  //   }
+  // }
+
+  function renderResult(data) {
+
+  console.log("API RESPONSE:", data);
+
+  resultArea.innerHTML = "";
+
+  // AI response
+  if (data.source === "AI") {
+
+    const card = document.createElement("div");
+
+    card.className = "result-card";
+
+    card.innerHTML = `
+      <h3>🤖 AI Diagnosis</h3>
+      <pre style="white-space: pre-wrap;">${data.diagnosis}</pre>
+    `;
+
+    resultArea.appendChild(card);
+
+    return;
   }
+
+  // No match found
+  if (!data.matches || data.matches.length === 0) {
+
+    const noMatch = document.createElement("div");
+
+    noMatch.className = "result-card";
+
+    noMatch.innerHTML = `
+      <strong>No exact disease match found.</strong>
+      <div class="result-meta">
+        Try adding more symptom keywords
+        (colors, spots, lesion shape, insects present).
+      </div>
+    `;
+
+    resultArea.appendChild(noMatch);
+
+    return;
+  }
+
+  // Database matches
+  for (const m of data.matches) {
+
+    const card = document.createElement("div");
+
+    card.className = "result-card";
+
+    card.innerHTML = `
+      <h4>${m.name}
+        <small style="color:#666">
+          (${m.type})
+        </small>
+      </h4>
+
+      <div>
+        <strong>Symptoms keywords:</strong>
+        ${m.symptoms.join(", ")}
+      </div>
+
+      <div style="margin-top:8px;">
+        <strong>Treatment:</strong>
+        ${m.treatment}
+      </div>
+
+      <div style="margin-top:6px;">
+        <strong>Pesticide:</strong>
+        ${m.pesticide}
+      </div>
+
+      <div style="margin-top:6px;">
+        <strong>Prevention:</strong>
+        ${m.prevention || "—"}
+      </div>
+    `;
+
+    resultArea.appendChild(card);
+  }
+}
 });
