@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const { FungalDisease, BacterialDisease, ViralDisease } = require("../models/Disease");
 const Crop = require("../models/Crop");
+const diagnoseWithAI = require("../services/aiDiagnosis");
 
 // Load and parse disease data (seed)
 function loadCropsFromFile() {
@@ -35,7 +36,7 @@ function listCrops(req, res) {
 }
 
 // Diagnose endpoint
-function diagnose(req, res) {
+async function diagnose(req, res) {
   const { cropName, symptomText } = req.body;
   if (!cropName || !symptomText) {
     return res.status(400).json({ error: "cropName and symptomText are required" });
@@ -45,14 +46,35 @@ function diagnose(req, res) {
   if (!crop) return res.status(404).json({ error: "Crop not found" });
 
   const matches = crop.diagnose(symptomText);
-  if (matches.length === 0) {
+if (matches.length === 0) {
+
+  try {
+
+    const aiDiagnosis =
+      await diagnoseWithAI(
+        crop.name,
+        symptomText
+      );
+
+    return res.json({
+      crop: crop.name,
+      symptomText,
+      source: "AI",
+      diagnosis: aiDiagnosis
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
     return res.json({
       crop: crop.name,
       symptomText,
       matches: [],
-      message: "No disease matched. Try describing additional symptoms or choose from suggested keywords."
+      message: "No disease matched and AI diagnosis failed."
     });
   }
+}
 
   return res.json({
     crop: crop.name,
