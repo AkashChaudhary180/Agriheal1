@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -23,63 +23,7 @@
 
   <main class="container">
     <section class="card">
-      <h2>DiagSmart crop disease diagnosis for farmers</p>
-      <div class="header-meta">
-        <span><i class="fas fa-database" aria-hidden="true"></i> Disease database</span>
-        <span class="dot" aria-hidden="true">&middot;</span>
-        <span><i class="fas fa-robot" aria-hidden="true"></i> AI-assisted diagnosis</span>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="card card--form reveal">
-      <h2><i class="fas fa-stethoscope" aria-hidden="true"></i> Diagnose Your Crop</h2>
-
-      <div class="form-row">
-        <label for="cropSelect">Select Crop</label>
-        <div class="select-wrap">
-          <select id="cropSelect"><option>Loading...</option></select>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <label for="symptomInput">Describe Symptoms (keywords)</label>
-        <textarea id="symptomInput" rows="4" placeholder="e.g. orange powdery bumps, rust-colored spots"></textarea>
-      </div>
-
-      <div class="form-row buttons-row">
-        <button id="diagnoseBtn" class="btn"><i class="fas fa-search" aria-hidden="true"></i> Diagnose</button>
-        <button id="clearBtn" class="btn secondary"><i class="fas fa-eraser" aria-hidden="true"></i> Clear</button>
-      </div>
-    </section>
-
-    <section id="resultSection" class="card card--result hidden">
-      <h3><i class="fas fa-notes-medical" aria-hidden="true"></i> Diagnosis Result</h3>
-      <div id="resultArea"></div>
-      <div class="form-row">
-        <button id="downloadBtn" class="btn"><i class="fas fa-download" aria-hidden="true"></i> Download Report</button>
-      </div>
-    </section>
-
-    <footer class="card muted reveal">
-      <p><i class="fas fa-leaf" aria-hidden="true"></i> Built for farmers. Expand disease database to improve accuracy.</p>
-    </footer>
-  </main>
-
-  <script src="script.js"></script>
-  <script>
-    // Purely visual: makes the button hover glow follow the cursor.
-    document.querySelectorAll('.btn').forEach(btn => {
-      btn.addEventListener('mousemove', e => {
-        const rect = btn.getBoundingClientRect();
-        btn.style.setProperty('--x', `${e.clientX - rect.left}px`);
-        btn.style.setProperty('--y', `${e.clientY - rect.top}px`);
-      });
-    });
-  </script>
-</body>
-</html>nose Your Crop <i class="fas fa-stethoscope"></i></h2>
+      <h2>Diagnose Your Crop <i class="fas fa-stethoscope"></i></h2>
       <div class="form-row">
         <label for="cropSelect">Select Crop</label>
         <select id="cropSelect"><option>Loading...</option></select>
@@ -111,17 +55,4 @@
 
   <script src="script.js"></script>
 </body>
-</html> 
-
-
-
-
-
-
-
-
-
-
-
-
-
+</html>
