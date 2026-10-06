@@ -1,55 +1,32 @@
-// const { InferenceClient } = require("@huggingface/inference");
+const Groq = require("groq-sdk");
 
-// const client = new InferenceClient(
-//   process.env.HF_TOKEN
-// );
-
-// async function diagnoseWithAI(cropName, symptomText) {
-
-//   const response = await client.chatCompletion({
-//     model: "Qwen/Qwen2.5-7B-Instruct",
-//     messages: [
-//       {
-//         role: "user",
-//         content: `
-// Crop: ${cropName}
-
-// Symptoms:
-// ${symptomText}
-
-// You are an agricultural expert.
-
-// Provide:
-// 1. Disease Name
-// 2. Cause
-// 3. Treatment
-// 4. Prevention
-
-// If uncertain, say so.
-// `
-//       }
-//     ]
-//   });
-
-//   return response.choices[0].message.content;
-// }
-
-// module.exports = diagnoseWithAI;
-
-
-
-
-const { InferenceClient } = require("@huggingface/inference");
-
-const client = new InferenceClient(
-  process.env.HF_TOKEN
-);
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY,
+});
 
 async function diagnoseWithAI(cropName, symptomText) {
   try {
-    const response = await client.chatCompletion({
-      model: "google/gemma-2-2b-it",
+    const completion = await groq.chat.completions.create({
+      model: "openai/gpt-oss-120b",
+
       messages: [
+        {
+          role: "system",
+          content: `
+You are an agricultural disease diagnosis expert.
+
+Analyze crop symptoms carefully and provide a useful diagnosis.
+
+Always provide:
+1. Disease Name
+2. Cause
+3. Treatment
+4. Prevention
+
+If the symptoms are insufficient to identify the disease with confidence,
+clearly mention that the diagnosis is uncertain.
+          `,
+        },
         {
           role: "user",
           content: `
@@ -57,34 +34,23 @@ Crop: ${cropName}
 
 Symptoms:
 ${symptomText}
-
-You are an agricultural expert.
-
-Provide:
-1. Disease Name
-2. Cause
-3. Treatment
-4. Prevention
-
-If uncertain, say so.
-`
-        }
+          `,
+        },
       ],
-      max_tokens: 300
+
+      max_completion_tokens: 500,
     });
 
-    return response.choices[0].message.content;
-
+    return completion.choices[0].message.content;
   } catch (error) {
-    console.error("========== HUGGING FACE ERROR ==========");
-    console.error("Status:", error.httpResponse?.status);
-    console.error("Body:", JSON.stringify(error.httpResponse?.body, null, 2));
+    console.error("========== GROQ ERROR ==========");
+    console.error("Message:", error.message);
+    console.error("Status:", error.status);
     console.error("Full Error:", error);
-    console.error("========================================");
+    console.error("================================");
 
-    throw error;
+    throw new Error("AI diagnosis service is currently unavailable.");
   }
 }
 
 module.exports = diagnoseWithAI;
-
