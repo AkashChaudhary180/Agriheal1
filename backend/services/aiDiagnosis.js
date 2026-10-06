@@ -15,37 +15,28 @@ async function diagnoseWithAI(cropName, symptomText) {
           content: `
 Crop: ${cropName}
 
-Symptoms:
-${symptomText}
+Symptoms: ${symptomText}
 
 You are an agricultural expert.
 
-Provide a detailed and helpful diagnosis.
-
-Include:
+Give a concise diagnosis with:
 1. Disease Name
 2. Cause
-3. Symptoms / Explanation
-4. Treatment
-5. Prevention
+3. Treatment
+4. Prevention
 
-If the symptoms are not sufficient to identify a specific disease, clearly say that the diagnosis is uncertain and explain what additional information would help.
-
-Give the answer in a clear, well-structured format that is easy for a farmer to understand.
+Keep each section short and practical.
+If uncertain, clearly mention that the diagnosis is uncertain.
           `,
         },
       ],
 
-      max_completion_tokens: 1000,
+      max_completion_tokens: 350,
     });
 
     return completion.choices[0].message.content;
   } catch (error) {
-    console.error("========== GROQ ERROR ==========");
-    console.error("Message:", error.message);
-    console.error("Status:", error.status);
-    console.error("Full Error:", error);
-    console.error("================================");
+    console.error("GROQ ERROR:", error.message);
 
     throw new Error("AI diagnosis service is currently unavailable.");
   }
