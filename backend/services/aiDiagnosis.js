@@ -11,45 +11,32 @@ async function diagnoseWithAI(cropName, symptomText) {
 
       messages: [
         {
-          role: "system",
-          content: `
-You are an agricultural disease diagnosis expert.
-
-Analyze the crop symptoms and provide a concise and practical diagnosis.
-
-IMPORTANT RULES:
-- Do NOT use Markdown.
-- Do NOT use tables.
-- Do NOT use bullet points.
-- Do NOT ask follow-up questions.
-- Keep the answer simple and easy to understand.
-- Do not give unnecessary explanations.
-- Return the answer EXACTLY in this format:
-
-Disease Name: <disease name or "Uncertain">
-
-Cause: <short explanation of the cause>
-
-Treatment: <short practical treatment>
-
-Prevention: <short practical prevention>
-
-Confidence: <High / Medium / Low>
-
-If the symptoms are too vague to identify a disease, use "Uncertain" as the Disease Name and explain briefly in the Cause section.
-          `,
-        },
-        {
           role: "user",
           content: `
 Crop: ${cropName}
 
-Symptoms: ${symptomText}
+Symptoms:
+${symptomText}
+
+You are an agricultural expert.
+
+Provide a detailed and helpful diagnosis.
+
+Include:
+1. Disease Name
+2. Cause
+3. Symptoms / Explanation
+4. Treatment
+5. Prevention
+
+If the symptoms are not sufficient to identify a specific disease, clearly say that the diagnosis is uncertain and explain what additional information would help.
+
+Give the answer in a clear, well-structured format that is easy for a farmer to understand.
           `,
         },
       ],
 
-      max_completion_tokens: 500,
+      max_completion_tokens: 1000,
     });
 
     return completion.choices[0].message.content;
