@@ -48,7 +48,7 @@ const client = new InferenceClient(
 async function diagnoseWithAI(cropName, symptomText) {
   try {
     const response = await client.chatCompletion({
-      model: "Qwen/Qwen2.5-7B-Instruct-1M",
+      model: "Qwen/Qwen2.5-7B-Instruct",
       messages: [
         {
           role: "user",
