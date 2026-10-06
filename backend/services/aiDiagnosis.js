@@ -14,19 +14,21 @@ async function diagnoseWithAI(cropName, symptomText) {
           role: "user",
           content: `
 Crop: ${cropName}
-
 Symptoms: ${symptomText}
 
-You are an agricultural expert.
+You are an agricultural expert. Provide a concise but complete diagnosis.
 
-Give a concise diagnosis with:
+Use exactly these 4 sections:
+
 1. Disease Name
 2. Cause
 3. Treatment
 4. Prevention
 
-Keep each section short and practical.
-If uncertain, clearly mention that the diagnosis is uncertain.
+Give practical information.
+Keep each section to 1-2 short sentences or 2-3 bullet points.
+Do not add extra sections.
+If the symptoms are insufficient, clearly mention that the diagnosis is uncertain.
           `,
         },
       ],
