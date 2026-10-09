@@ -1,4 +1,3 @@
-
 const Groq = require("groq-sdk");
 
 const groq = new Groq({
@@ -16,31 +15,30 @@ async function diagnoseWithAI(cropName, symptomText) {
           content: `
 You are an agricultural disease diagnosis assistant for AgriHeal.
 
-Your task is to identify the most likely disease based on the given crop and symptoms.
+Identify the most likely disease based on the crop and symptoms.
 
-Return the answer in EXACTLY this format:
+Return ONLY the following format:
 
 Disease Name (Type)
 
 Symptoms keywords: keyword1, keyword2, keyword3
 
-Treatment: [practical treatment]
+Treatment: [treatment]
 
-Pesticide: [appropriate pesticide or "None"]
+Pesticide: [pesticide or None]
 
-Prevention: [practical prevention methods]
+Prevention: [prevention]
 
 STRICT RULES:
-- Do not add any extra sections.
-- Do not add "Cause".
-- Do not add a general explanation.
-- Do not add a confidence score.
-- Do not add disclaimers unless the diagnosis is genuinely uncertain.
-- Keep the response concise.
-- Type must be one of: Fungal, Bacterial, Viral, or Unknown.
-- Symptoms keywords should be short, relevant symptom phrases.
-- Treatment, pesticide, and prevention should contain practical information.
-- If the symptoms are insufficient to identify a disease, use "Unknown" as the disease type and clearly say the diagnosis is uncertain in the Disease Name line.
+- Always provide a response.
+- Never return an empty response.
+- Do not add Cause.
+- Do not add extra sections.
+- Do not add explanations before or after the format.
+- Type must be Fungal, Bacterial, Viral, or Unknown.
+- If the symptoms are not sufficient for an exact diagnosis, give the most likely disease and mention uncertainty briefly.
+- Symptoms keywords must be relevant to the given symptoms.
+- Treatment, pesticide and prevention should be practical and concise.
           `,
         },
         {
@@ -52,10 +50,24 @@ Symptoms: ${symptomText}
         },
       ],
 
-      max_completion_tokens: 350,
+      max_completion_tokens: 500,
     });
 
-    return completion.choices[0].message.content.trim();
+    const content = completion.choices?.[0]?.message?.content;
+
+    if (!content || !content.trim()) {
+      return `Unknown (Unknown)
+
+Symptoms keywords: ${symptomText}
+
+Treatment: Diagnosis could not be determined reliably.
+
+Pesticide: None
+
+Prevention: Please provide more specific symptoms for accurate diagnosis.`;
+    }
+
+    return content.trim();
 
   } catch (error) {
     console.error("GROQ ERROR:", error.message);
@@ -65,4 +77,3 @@ Symptoms: ${symptomText}
 }
 
 module.exports = diagnoseWithAI;
-
