@@ -1,3 +1,4 @@
+
 const Groq = require("groq-sdk");
 
 const groq = new Groq({
@@ -11,24 +12,42 @@ async function diagnoseWithAI(cropName, symptomText) {
 
       messages: [
         {
+          role: "system",
+          content: `
+You are an agricultural disease diagnosis assistant for AgriHeal.
+
+Your task is to identify the most likely disease based on the given crop and symptoms.
+
+Return the answer in EXACTLY this format:
+
+Disease Name (Type)
+
+Symptoms keywords: keyword1, keyword2, keyword3
+
+Treatment: [practical treatment]
+
+Pesticide: [appropriate pesticide or "None"]
+
+Prevention: [practical prevention methods]
+
+STRICT RULES:
+- Do not add any extra sections.
+- Do not add "Cause".
+- Do not add a general explanation.
+- Do not add a confidence score.
+- Do not add disclaimers unless the diagnosis is genuinely uncertain.
+- Keep the response concise.
+- Type must be one of: Fungal, Bacterial, Viral, or Unknown.
+- Symptoms keywords should be short, relevant symptom phrases.
+- Treatment, pesticide, and prevention should contain practical information.
+- If the symptoms are insufficient to identify a disease, use "Unknown" as the disease type and clearly say the diagnosis is uncertain in the Disease Name line.
+          `,
+        },
+        {
           role: "user",
           content: `
 Crop: ${cropName}
 Symptoms: ${symptomText}
-
-You are an agricultural expert. Provide a concise but complete diagnosis.
-
-Use exactly these 4 sections:
-
-1. Disease Name
-2. Cause
-3. Treatment
-4. Prevention
-
-Give practical information.
-Keep each section to 1-2 short sentences or 2-3 bullet points.
-Do not add extra sections.
-If the symptoms are insufficient, clearly mention that the diagnosis is uncertain.
           `,
         },
       ],
@@ -36,7 +55,8 @@ If the symptoms are insufficient, clearly mention that the diagnosis is uncertai
       max_completion_tokens: 350,
     });
 
-    return completion.choices[0].message.content;
+    return completion.choices[0].message.content.trim();
+
   } catch (error) {
     console.error("GROQ ERROR:", error.message);
 
@@ -45,3 +65,4 @@ If the symptoms are insufficient, clearly mention that the diagnosis is uncertai
 }
 
 module.exports = diagnoseWithAI;
+
